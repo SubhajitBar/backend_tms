@@ -27,8 +27,8 @@ export const signup = catchAsyncError(async (req, res, next) => {
     const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
     const options = {
         expires: new Date(Date.now() + 15 * 24 * 60 * 60 * 1000),
-        // httpOnly: true,
-        // secure: true,
+        httpOnly: true,
+        secure: true,
         sameSite: "none",
     };
     res.status(201).cookie("token", token, options).json({
@@ -52,8 +52,8 @@ export const login = catchAsyncError(async (req, res, next) => {
 
     const options = {
         expires: new Date(Date.now() + 15 * 24 * 60 * 60 * 1000),
-        // httpOnly: true,
-        // secure: true,
+        httpOnly: true,
+        secure: true,
         sameSite: "none",
     };
 
